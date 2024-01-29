@@ -11,7 +11,7 @@ public interface UserService {
     User getUserById(Integer id);
 
     User getUserByEmail(String email);
-    User followUser(Integer userId1, Integer userId2);
+    String followUser(Integer userId1, Integer userId2);
     User updateUser(User user, Integer id);
     String deleteUser(Integer id);
     List<User> searchUser(String query);

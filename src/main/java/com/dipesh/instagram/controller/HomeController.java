@@ -10,6 +10,11 @@ public class HomeController {
     @Autowired
     UserService userService;
 
+    //check working
+    @GetMapping
+    public String checkWorking() {
+        return "application working";
+    }
     // Add a new user
     @PostMapping("/users")
     public User createUser(@RequestBody User user) {
@@ -33,5 +38,11 @@ public class HomeController {
     @DeleteMapping("/users/{userId}")
     public String deleteUser(@PathVariable("userId") Integer id) {
         return userService.deleteUser(id);
+    }
+
+    //follow a user
+    @PostMapping("/users/follow/{userId1}/{userId2}")
+    public String followUser (@PathVariable("userId1") Integer userId1, @PathVariable("userId2") Integer userId2) {
+        return userService.followUser(userId1, userId2);
     }
 }
