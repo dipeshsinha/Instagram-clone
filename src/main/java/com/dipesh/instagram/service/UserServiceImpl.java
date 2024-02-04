@@ -17,6 +17,11 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
     public User createNewUser(User user) {
         User newUser = new User();
         if(user.getId()!=null) {
@@ -105,4 +110,6 @@ public class UserServiceImpl implements UserService {
     public List<User> searchUser(String query) {
         return userRepository.searchUser(query);
     }
+
+
 }

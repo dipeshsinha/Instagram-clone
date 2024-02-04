@@ -1,15 +1,16 @@
 package com.dipesh.instagram.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String firstName;
     private String lastName;
@@ -18,6 +19,8 @@ public class User {
     private String gender;
     private List<Integer> followings;
     private List<Integer> followers;
+    @ManyToMany
+    private List<Post> savedPost = new ArrayList<>();
 
 
     public User() {}
@@ -92,5 +95,13 @@ public class User {
 
     public void setFollowers(List<Integer> followers) {
         this.followers = followers;
+    }
+
+    public List<Post> getSavedPost() {
+        return savedPost;
+    }
+
+    public void setSavedPost(List<Post> savedPost) {
+        this.savedPost = savedPost;
     }
 }
