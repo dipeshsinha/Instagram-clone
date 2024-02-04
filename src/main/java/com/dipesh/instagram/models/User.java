@@ -1,5 +1,6 @@
 package com.dipesh.instagram.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
@@ -19,6 +20,7 @@ public class User {
     private String gender;
     private List<Integer> followings;
     private List<Integer> followers;
+    @JsonIgnore
     @ManyToMany
     private List<Post> savedPost = new ArrayList<>();
 
