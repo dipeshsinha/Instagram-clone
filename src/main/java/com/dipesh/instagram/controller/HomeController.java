@@ -13,7 +13,7 @@ public class HomeController {
     UserService userService;
 
     //Get all users
-    @GetMapping("/users")
+    @GetMapping("/api/users")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
@@ -25,20 +25,20 @@ public class HomeController {
     }
 
     //Find user by ID
-    @GetMapping("/users/{userId}")
+    @GetMapping("/api/users/{userId}")
     public User getUserById(@PathVariable("userId") Integer id) throws Exception {
         return userService.getUserById(id);
     }
 
 
     //Update existing user
-    @PutMapping("/users/{userId}")
+    @PutMapping("/api/users/{userId}")
     public User updateUser(@RequestBody User user, @PathVariable Integer userId) {
         return userService.updateUser(user, userId);
     }
 
     //Delete existing user
-    @DeleteMapping("/users/{userId}")
+    @DeleteMapping("/api/users/{userId}")
     public String deleteUser(@PathVariable("userId") Integer id) {
         return userService.deleteUser(id);
     }
@@ -50,7 +50,7 @@ public class HomeController {
     }
 
     //search User
-    @GetMapping("users/search")
+    @GetMapping("/api/users/search")
     public List<User> searchUser(@RequestParam("query") String query) {
         List<User> users = userService.searchUser(query);
         return users;
